@@ -1,0 +1,38 @@
+.account-wrapper {
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+}
+
+.account-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: 40px;
+}
+
+.account-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.account-header {
+  margin-bottom: 40px;
+}
+
+.account-title {
+  font-size: 32px;
+  font-weight: 1000;
+  color: #0f172a;
+  letter-spacing: -1.5px;
+  margin: 0;
+}
+
+.account-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  margin-top: 8px;
+  font-weight: 600;
+}

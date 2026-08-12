@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "UHAS BASIC SCHOOL",
+    "slug": "uhas-basic-school",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/UBS.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/UBS.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.uhasbasicschool.app",
+      "buildNumber": "1",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSCameraUsageDescription": "UHAS Basic School needs camera access to take profile photos.",
+        "NSPhotoLibraryUsageDescription": "UHAS Basic School needs photo library access to select profile photos.",
+        "CFBundleDisplayName": "UHAS Basic"
+      },
+      "splash": {
+        "image": "./assets/UBS.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff",
+        "dark": {
+          "image": "./assets/UBS.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#0f172a"
+        }
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/UBS.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.uhasbasicschool.app",
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d2c15b13-7e26-4a86-a911-f91715704087"
+      }
+    }
+  }
+}

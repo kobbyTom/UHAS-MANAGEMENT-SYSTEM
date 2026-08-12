@@ -1,0 +1,567 @@
+/* Timetable.css - Chronos Design System - High-Fidelity Glassmorphism Edition */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --chronos-primary: #00843e;
+  --chronos-primary-hsl: 148, 100%, 26%;
+  --chronos-accent: #facc15;
+  --chronos-accent-hsl: 48, 96%, 53%;
+  --chronos-bg: #ffffff;
+  --chronos-glass: rgba(255, 255, 255, 0.7);
+  --chronos-glass-border: rgba(255, 255, 255, 0.5);
+  --chronos-card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --chronos-text-main: #0f172a;
+  --chronos-text-muted: #64748b;
+  --chronos-border: #f1f5f9;
+}
+
+html, body {
+  background-color: var(--chronos-bg) !important;
+  margin: 0;
+  padding: 0;
+}
+
+.timetable-container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.timetable-content {
+  padding: 110px 60px 60px;
+  margin-left: var(--sidebar-width, 260px);
+  position: relative;
+  z-index: 1;
+  animation: chronosSlideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes chronosSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header & Typography */
+.timetable-header {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.badge-academic {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: #fefce8;
+  color: #854d0e;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  border: none;
+}
+
+.timetable-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--chronos-text-main);
+  margin: 0;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+}
+
+.timetable-title span {
+  background: linear-gradient(135deg, var(--chronos-primary), #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timetable-subtitle {
+  color: var(--chronos-text-muted);
+  font-size: 18px;
+  margin-top: 12px;
+  font-weight: 500;
+  max-width: 600px;
+}
+
+/* Temporal Dashboard (Stats) */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-box {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-color: var(--chronos-primary);
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--chronos-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.stat-value {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--chronos-text-main);
+  margin: 0;
+  letter-spacing: -1.5px;
+}
+
+.stat-bar {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 16px;
+  background: var(--chronos-primary);
+}
+
+/* Control Deck */
+.control-deck {
+  padding: 24px 32px;
+  margin-bottom: 48px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  border-radius: 32px;
+  background: var(--chronos-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--chronos-glass-border);
+  box-shadow: var(--chronos-card-shadow);
+}
+
+.perspective-toggle {
+  display: flex;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 18px;
+  gap: 4px;
+}
+
+.perspective-btn {
+  padding: 10px 20px;
+  border-radius: 14px;
+  border: none;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.perspective-btn.active {
+  background: white;
+  color: var(--chronos-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.perspective-btn:not(.active) {
+  background: transparent;
+  color: var(--chronos-text-muted);
+}
+
+.perspective-btn:not(.active):hover {
+  background: rgba(255,255,255,0.8);
+}
+
+.premium-btn-secondary:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: var(--chronos-text-main) !important;
+}
+
+/* Timetable Axis & Grid */
+.timetable-grid-wrapper {
+  margin-top: 40px;
+}
+
+.day-headers {
+  display: grid;
+  grid-template-columns: 180px repeat(5, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.day-header-card {
+  padding: 20px;
+  text-align: center;
+  border-radius: 24px;
+  background: var(--chronos-glass);
+  border: 1px solid var(--chronos-glass-border);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--chronos-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: var(--chronos-card-shadow);
+  transition: all 0.3s;
+}
+
+.day-header-card.is-today {
+  border-color: var(--chronos-primary);
+  color: var(--chronos-primary);
+  background: hsla(var(--chronos-primary-hsl), 0.05);
+}
+
+.temporal-row {
+  display: grid;
+  grid-template-columns: 180px repeat(5, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.time-marker {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.time-labels {
+  text-align: right;
+}
+
+.time-start {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--chronos-text-main);
+  line-height: 1;
+}
+
+.time-end {
+  font-size: 12px;
+  color: var(--chronos-text-muted);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.time-duration {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--chronos-primary);
+  background: hsla(var(--chronos-primary-hsl), 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-top: 6px;
+  display: inline-block;
+  text-transform: lowercase;
+}
+
+.axis-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.axis-line {
+  width: 2px;
+  flex-grow: 1;
+  background: linear-gradient(to bottom, #e2e8f0 50%, transparent 50%);
+  background-size: 2px 8px;
+}
+
+.axis-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: 3px solid white;
+  box-shadow: 0 0 0 1px #e2e8f0;
+  z-index: 2;
+  transition: all 0.4s;
+}
+
+.axis-dot.active {
+  background: var(--chronos-primary);
+  box-shadow: 0 0 0 1px var(--chronos-primary), 0 0 15px rgba(0, 132, 62, 0.4);
+  transform: scale(1.4);
+}
+
+.axis-dot.active::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--chronos-primary);
+  animation: chronosPing 1.5s infinite;
+}
+
+@keyframes chronosPing {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Period Cards - Hyper Premium */
+.period-card-premium {
+  background: var(--chronos-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--chronos-glass-border);
+  border-radius: 28px;
+  padding: 24px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--chronos-card-shadow);
+}
+
+.period-card-premium:hover .allocate-hover-indicator {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+
+.allocate-hover-indicator {
+  transform: translateY(5px);
+  transition: all 0.3s ease;
+}
+
+.period-card-premium:hover {
+  transform: scale(1.04) translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  border-color: hsla(var(--chronos-primary-hsl), 0.4);
+  z-index: 10;
+}
+
+.period-card-premium::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.period-card-premium.is-break {
+  background: rgba(248, 250, 252, 0.5);
+  border: 2px dashed #e2e8f0;
+  box-shadow: none;
+}
+
+.period-card-premium.is-active {
+  background: hsla(var(--chronos-primary-hsl), 0.03);
+  border: 2px solid var(--chronos-primary);
+  box-shadow: inset 0 0 20px rgba(0, 132, 62, 0.05), 0 20px 40px rgba(0, 132, 62, 0.1);
+}
+
+.live-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #fee2e2;
+  border-radius: 100px;
+  color: #ef4444;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.node-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--chronos-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.subject-badge-premium {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--chronos-text-main);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.teacher-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.teacher-avatar-small {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  background: hsla(var(--chronos-primary-hsl), 0.1);
+  color: var(--chronos-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  border: 1px solid hsla(var(--chronos-primary-hsl), 0.1);
+}
+
+.room-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--chronos-text-muted);
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.open-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  gap: 12px;
+}
+
+.open-slot svg {
+  width: 32px;
+  height: 32px;
+  opacity: 0.4;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.period-card-premium:hover .open-slot svg {
+  opacity: 1;
+  transform: rotate(90deg) scale(1.2);
+  color: var(--chronos-primary);
+}
+
+/* Identity Spectrum */
+.spectrum-container {
+  margin-top: 60px;
+  padding: 40px;
+  background: var(--chronos-glass);
+  backdrop-filter: blur(20px);
+  border-radius: 40px;
+  border: 1px solid var(--chronos-glass-border);
+  box-shadow: var(--chronos-card-shadow);
+}
+
+.spectrum-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.spectrum-bar {
+  width: 6px;
+  height: 24px;
+  background: var(--chronos-primary);
+  border-radius: 100px;
+}
+
+.spectrum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.spectrum-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--chronos-border);
+  transition: all 0.3s;
+}
+
+.spectrum-item:hover {
+  border-color: var(--chronos-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+}
+
+/* Premium Inputs & Selects */
+.premium-input {
+  width: 100%;
+  padding: 14px 24px;
+  border: 2px solid #f1f5f9;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--chronos-text-main);
+  background: #ffffff;
+  transition: all 0.3s;
+  outline: none;
+}
+
+.premium-input:focus {
+  border-color: var(--chronos-primary);
+  background: white;
+  box-shadow: 0 0 0 4px hsla(var(--chronos-primary-hsl), 0.1);
+}
+
+/* Modals */
+.premium-modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(30px);
+  border-radius: 40px;
+  padding: 50px;
+  border: 1px solid white;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* Responsive Utilities */
+@media (max-width: 1400px) {
+  .timetable-content { padding: 100px 30px 40px; }
+  .day-headers, .temporal-row { grid-template-columns: 140px repeat(5, 1fr); gap: 16px; }
+}
+
+@media (max-width: 1024px) {
+  .timetable-content { margin-left: 0; padding: 100px 20px 40px; }
+  .stats-row { grid-template-columns: 1fr; }
+  .control-deck { flex-wrap: wrap; }
+}
